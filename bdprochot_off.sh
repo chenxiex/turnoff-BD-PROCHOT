@@ -6,7 +6,7 @@ sudo modprobe msr
 r=`sudo rdmsr 0x1FC`
 #echo $r > temp
 s='0x'$r'' 
-f=$(($s&0xFFFFE))
-sudo wrmsr 0x1FC "obase=16;$f"|bc
-echo "$r"" write to ""reg 0x1FC" 
+f=$(($s&0xFFFFFE))
+sudo wrmsr 0x1FC $f
+echo "$f"" write to ""reg 0x1FC" 
 echo "BD PROCHOT off."
